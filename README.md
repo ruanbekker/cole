@@ -100,10 +100,13 @@ PDIntegrationKey = "5353fb993888441811111111111"
 ``` shell
 docker run -d \
 -e SENDER_TYPE="slack" \
+-e SLACK_CHANNEL="#system-events" \
+-e SLACK_ICON=":fire:" \
+-e SLACK_USERNAME="DeadManSwitch Monitor" \
 -e INTERVAL="10" \
 -e HTTP_ENDPOINT="https://hooks.slack.com/services/..." \
 -p 8080:8080 \
-cole:0.2.0
+ruanbekker/cole-deadmanswitch
 ```
 
 ### Bare binary
