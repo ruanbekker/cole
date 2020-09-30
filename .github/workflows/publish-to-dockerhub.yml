@@ -32,8 +32,10 @@ jobs:
         push: true
         tags: ruanbekker/cole-deadmanswitch:latest
 
-    - name: pushover-actions
-      uses: clivern/pushover-actions@master
-      env:
-        PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
-        PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
+    - name: Push Build Status Notifications
+      if: ${{ always() }}
+      uses: desiderati/github-action-pushover@v1
+      with:
+        job-status: ${{ job.status }}
+        pushover-api-token: ${{ secrets.PUSHOVER_TOKEN }}
+        pushover-user-key: ${{ secrets.PUSHOVER_USER }}
